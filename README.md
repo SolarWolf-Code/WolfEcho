@@ -4,7 +4,6 @@ WolfEcho is a Discord bot that uses [discordgo](https://github.com/bwmarrin/disc
 
 
 ## TODO
-- Add db support (mainly for `we/reminder`)
-- Add bot other integration
 - Add more commands
+- `we/remind list` command
 
