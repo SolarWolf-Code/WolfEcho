@@ -10,4 +10,4 @@ COPY go.mod go.sum wolfecho/ ./
 RUN go build -o wolfecho .
 
 # run wolfecho
-CMD ["./wolfecho"]
+CMD ["/app/wolfecho"]
