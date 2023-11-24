@@ -1,4 +1,4 @@
-module wolfecho
+module github.com/SolarWolf-Code/WolfEcho
 
 go 1.21.4
 
