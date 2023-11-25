@@ -1,24 +1,17 @@
-# Build stage
-FROM golang:1.21.4-bookworm AS builder
+# Use an official Golang runtime as a parent image
+FROM golang:latest
 
-WORKDIR /app
+# Set the working directory to /go/src/app
+WORKDIR /go/src/app
 
-# Copy over files
+# Copy the current directory contents into the container at /go/src/app
 COPY . .
 
-# Build the binary
-RUN go build -o wolfecho
+# Build the Go app
+RUN go build -o app
 
-# Final stage
-FROM debian:buster-slim
+# Define a volume for persistent storage
+VOLUME ["/data"]
 
-WORKDIR /app
-
-# Copy only the built binary from the builder stage
-COPY --from=builder /app/wolfecho .
-
-# Volume for persistent data
-VOLUME [ "/app/data" ]
-
-# Run the binary
-CMD ["./wolfecho"]
+# Command to run the executable
+CMD ["./app"]
