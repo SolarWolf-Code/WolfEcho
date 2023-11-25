@@ -23,7 +23,7 @@ func init() {
 }
 
 func SendMessage(channelid string, msg string) {
-	log.Debugf("Sending msg '%s'", msg) // use another arg for what type of logging we need (i.e. debug, info, error, etc.)
+	log.Infof("Sending msg '%s'", msg) // use another arg for what type of logging we need (i.e. debug, info, error, etc.)
 	DiscordSession.ChannelMessageSend(channelid, msg)
 }
 
@@ -64,7 +64,7 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 		return
 	}
 
-	log.Debugf("Processing msg '%s' from '%s'", m.Content, m.Author.Username)
+	log.Infof("Processing msg '%s' from '%s'", m.Content, m.Author.Username)
 
 	msg := strings.TrimSpace(m.Content)
 	// check if msg starts with CommandPrefix
