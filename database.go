@@ -62,10 +62,10 @@ func deleteOldReminders() {
 
 func InitializeDatabase() {
 	log.Info("Initializing database...")
-	// creates db if it doesn't exist
 
+	// creates db if it doesn't exist
 	var err error
-    Db, err = sql.Open("sqlite3", "./wolfecho.db")
+    Db, err = sql.Open("sqlite3", "/data/wolfecho.db")
 	if err != nil {
 		log.Fatal(err)
 	}

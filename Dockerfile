@@ -1,17 +1,15 @@
 # Use an official Golang runtime as a parent image
-FROM golang:latest
+FROM golang:latest as builder
 
-# Set the working directory to /go/src/app
-WORKDIR /go/src/app
+# Set the working directory to /app
+WORKDIR /app
 
-# Copy the current directory contents into the container at /go/src/app
+# Copy the current directory contents into the container at /app
 COPY . .
 
-# Build the Go app
-RUN go build -o app
+RUN go build -o main .
 
-# Define a volume for persistent storage
-VOLUME ["/data"]
+# Create a directory to store the database file
+RUN mkdir /data
 
-# Command to run the executable
-CMD ["./app"]
+CMD [ "./main" ]
