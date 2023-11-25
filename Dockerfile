@@ -6,10 +6,10 @@ WORKDIR /app
 COPY . ./
 
 # build the binary
-RUN go build -o wolfecho .
+RUN go build -o wolfecho/wolfecho .
 
 RUN ls
 RUN pwd
 
 # run wolfecho
-CMD ["./wolfecho"]
+CMD ["wolfecho/wolfecho"]
