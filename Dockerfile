@@ -8,8 +8,7 @@ COPY . ./
 # build the binary
 RUN go build -o wolfecho/wolfecho .
 
-RUN ls
-RUN pwd
+VOLUME [ "/app" ]
 
 # run wolfecho
 CMD ["wolfecho/wolfecho"]
