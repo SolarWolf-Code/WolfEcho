@@ -4,10 +4,10 @@ FROM golang:1.21.4-bookworm
 WORKDIR /app
 
 # Copy over files
-COPY go.mod go.sum wolfecho/ ./
+COPY . .
 
 # build the binary
 RUN go build -o wolfecho .
 
 # run wolfecho
-CMD ["/app/wolfecho"]
+CMD ["./wolfecho"]
