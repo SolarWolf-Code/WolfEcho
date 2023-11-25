@@ -19,7 +19,7 @@ var (
 
 func init() {
 	// load token from env
-	Token = os.Getenv("TOKEN")
+	Token = os.Getenv("WOLFECHO_TOKEN")
 }
 
 func SendMessage(channelid string, msg string) {
