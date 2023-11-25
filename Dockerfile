@@ -1,14 +1,24 @@
-FROM golang:1.21.4-bookworm
+# Build stage
+FROM golang:1.21.4-bookworm AS builder
 
 WORKDIR /app
 
 # Copy over files
-COPY . ./
+COPY . .
 
-# build the binary
-RUN go build -o wolfecho/wolfecho .
+# Build the binary
+RUN go build -o wolfecho
 
-VOLUME [ "/app" ]
+# Final stage
+FROM debian:buster-slim
 
-# run wolfecho
-CMD ["wolfecho/wolfecho"]
+WORKDIR /app
+
+# Copy only the built binary from the builder stage
+COPY --from=builder /app/wolfecho .
+
+# Volume for persistent data
+VOLUME [ "/app/data" ]
+
+# Run the binary
+CMD ["./wolfecho"]
